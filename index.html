@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syed Hayat Hussain</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #0a0a0f; color: #e8e6f0; min-height: 100vh; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; background: rgba(10,10,15,0.92); backdrop-filter: blur(8px); z-index: 10; }
+  .logo { font-family: 'Space Mono', monospace; font-size: 1.1rem; color: #a78bfa; letter-spacing: 1px; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: #9ca3af; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: #a78bfa; }
+  .hero { padding: 6rem 5% 4rem; max-width: 900px; }
+  .hero-tag { font-family: 'Space Mono', monospace; font-size: 0.78rem; color: #a78bfa; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px; }
+  .hero-tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: #a78bfa; }
+  .hero h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 600; line-height: 1.1; letter-spacing: -1px; margin-bottom: 1.5rem; color: #f1f0f5; }
+  .hero h1 span { color: #a78bfa; }
+  .hero p { font-size: 1.1rem; color: #9ca3af; line-height: 1.8; max-width: 580px; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { padding: 0.75rem 1.8rem; background: #a78bfa; color: #0a0a0f; border: none; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: #c4b5fd; transform: translateY(-1px); }
+  .btn-secondary { padding: 0.75rem 1.8rem; background: transparent; color: #e8e6f0; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s, transform 0.15s; }
+  .btn-secondary:hover { border-color: #a78bfa; transform: translateY(-1px); }
+  .divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0 5%; }
+  .section { padding: 4rem 5%; }
+  .section-label { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: #a78bfa; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 10px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); max-width: 200px; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+  .skill-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1rem; text-align: center; transition: border-color 0.2s, background 0.2s; }
+  .skill-card:hover { border-color: rgba(167,139,250,0.4); background: rgba(167,139,250,0.06); }
+  .skill-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .skill-name { font-size: 0.82rem; font-weight: 500; color: #d1d5db; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .project-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; cursor: default; }
+  .project-card:hover { border-color: rgba(167,139,250,0.35); transform: translateY(-3px); }
+  .project-tag { display: inline-block; font-size: 0.72rem; font-family: 'Space Mono', monospace; color: #a78bfa; background: rgba(167,139,250,0.1); border-radius: 4px; padding: 3px 8px; margin-bottom: 0.85rem; }
+  .project-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #f1f0f5; }
+  .project-card p { font-size: 0.85rem; color: #9ca3af; line-height: 1.6; }
+  .contact-box { background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.2); border-radius: 12px; padding: 3rem; text-align: center; max-width: 520px; margin: 0 auto; }
+  .contact-box h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 0.75rem; color: #f1f0f5; }
+  .contact-box p { color: #9ca3af; margin-bottom: 1.8rem; font-size: 0.95rem; line-height: 1.7; }
+  footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; color: #4b5563; font-family: 'Space Mono', monospace; border-top: 1px solid rgba(255,255,255,0.05); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SyedHayat.dev</div>
+  <ul class="nav-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Skills</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Hello, World</div>
+  <h1>I'm <span>Syed Hayat<br>Hussain</span>,<br>UI/UX Designer & Web Developer</h1>
+  <p>5th semester BSCS student at Sindh Madressatul Islam University, Karachi. I design clean, user-friendly interfaces in Figma and build them into functional websites with HTML, CSS, and JavaScript. Detail-oriented, reliable, and available for freelance work including UI/UX design, web development, and data entry.</p>
+  <div class="hero-btns">
+    <button class="btn-primary">View My Work</button>
+    <button class="btn-secondary">Download CV</button>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Skills</div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">🎯</div><div class="skill-name">Figma</div></div>
+    <div class="skill-card"><div class="skill-icon">✨</div><div class="skill-name">UI &amp; UX Design</div></div>
+    <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">HTML</div></div>
+    <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">CSS</div></div>
+    <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-name">JavaScript</div></div>
+    <div class="skill-card"><div class="skill-icon">⌨️</div><div class="skill-name">Typing</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Projects</div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="project-tag">HTML / CSS</span>
+      <h3>Personal Portfolio</h3>
+      <p>A responsive portfolio website to showcase my skills and academic projects built from scratch.</p>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Figma / UI-UX</span>
+      <h3>Connect Campus Platform</h3>
+      <p>A complete UI/UX lab manual designed in Figma, covering wireframes, prototypes, and design principles across 14 labs.</p>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Excel / Data</span>
+      <h3>Data Entry &amp; Analysis</h3>
+      <p>Accurate, well-organized spreadsheet work including data cleaning, formulas, and structured reporting.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Contact</div>
+  <div class="contact-box">
+    <h2>Let's Connect</h2>
+    <p>Currently looking for internship opportunities in Karachi in Software Development and Cybersecurity. Open to collaborations and new projects!</p>
+    <a href="mailto:syedhayathussainkamalmohi@gmail.com" class="btn-primary" style="display:inline-block; text-decoration:none;">syedhayathussainkamalmohi@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  © 2024 Syed Hayat Hussain — Built with HTML & CSS
+</footer>
+
+</body>
+</html>
